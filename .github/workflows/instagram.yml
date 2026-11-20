@@ -1,0 +1,142 @@
+name: 텍스트몬 인스타 올리기
+
+on:
+  # 게시물 파일을 올리면: 영상·그림만 만들어 미리보기 (인스타에 올리지 않음)
+  push:
+    paths: ["posts/**"]
+  # 매일 저녁 8시 47분(한국 시간)에 그날 게시물을 인스타에 올림
+  schedule:
+    - cron: "47 11 * * *"
+  # 손으로 실행: 날짜를 골라 미리보기 또는 바로 올리기
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "날짜 (비우면 오늘, 예: 2026-11-21)"
+        required: false
+      publish:
+        description: "인스타그램에 올리기"
+        type: boolean
+        default: false
+
+concurrency:
+  group: instagram-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{ steps.decide.outputs.date }}
+      publish: ${{ steps.decide.outputs.publish }}
+      media: ${{ steps.decide.outputs.media }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: 오늘 할 일 정하기
+        id: decide
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_DATE: ${{ inputs.date }}
+          INPUT_PUBLISH: ${{ inputs.publish }}
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+        run: python3 scripts/decide.py
+
+      - uses: actions/setup-python@v5
+        if: steps.decide.outputs.date != ''
+        with:
+          python-version: "3.12"
+
+      - name: 도구 설치
+        if: steps.decide.outputs.date != ''
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          pip install -q -r scripts/requirements.txt
+
+      - name: 영상·그림 만들기
+        if: steps.decide.outputs.date != ''
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
+          GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
+        run: python3 scripts/render.py "posts/${{ steps.decide.outputs.date }}" "out/${{ steps.decide.outputs.date }}"
+
+      - name: 미리보기 파일 보관 (Actions 화면에서 내려받기)
+        if: steps.decide.outputs.date != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-${{ steps.decide.outputs.date }}
+          path: out/${{ steps.decide.outputs.date }}
+          retention-days: 14
+
+      - name: 캐러셀 그림을 공개 주소로 준비
+        if: steps.decide.outputs.publish == 'true' && steps.decide.outputs.media == 'CAROUSEL'
+        run: |
+          mkdir -p site/${{ steps.decide.outputs.date }}
+          cp out/${{ steps.decide.outputs.date }}/carousel_*.jpg site/${{ steps.decide.outputs.date }}/
+          touch site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.decide.outputs.publish == 'true' && steps.decide.outputs.media == 'CAROUSEL'
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.publish == 'true' && needs.build.outputs.media == 'CAROUSEL'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4
+
+  publish:
+    needs: [build, deploy]
+    if: always() && needs.build.result == 'success' && needs.build.outputs.publish == 'true' && (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: preview-${{ needs.build.outputs.date }}
+          path: out/${{ needs.build.outputs.date }}
+
+      - name: 인스타그램에 올리기
+        id: ig
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          GRAPH_HOST: ${{ vars.GRAPH_HOST }}
+          GRAPH_VERSION: ${{ vars.GRAPH_VERSION }}
+          MEDIA_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: python3 scripts/publish.py "out/${{ needs.build.outputs.date }}"
+
+      - name: 올린 기록 남기기 (posted.md)
+        env:
+          D: ${{ needs.build.outputs.date }}
+          M: ${{ needs.build.outputs.media }}
+          L: ${{ steps.ig.outputs.permalink }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          d, m, l = os.environ["D"], os.environ["M"], os.environ["L"]
+          post = json.load(open(f"posts/{d}/post.json", encoding="utf-8"))
+          first = str(post.get("caption", "")).replace("\\n", "\n").strip().split("\n")[0].replace("|", "/")
+          line = f"| {d} | {m} | {post.get('slot','')}{post.get('angle','')} | {first} | {l} |\n"
+          with open("posted.md", "a", encoding="utf-8") as f:
+              f.write(line)
+          PY
+          git config user.name "textmon-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add posted.md
+          git commit -m "인스타 올림: $D"
+          git push

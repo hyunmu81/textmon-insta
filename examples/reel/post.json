@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-21",
+  "slot": 1,
+  "angle": "A",
+  "audience": "parent",
+  "media_type": "REELS",
+  "reel": {
+    "duration": 20,
+    "music_mood": "잔잔한 피아노",
+    "scenes": [
+      {"order": 1, "start": 0, "end": 3, "asset": "", "on_screen_text": "세 번 읽었는데, 왜?", "narration": "", "motion": "none"},
+      {"order": 2, "start": 3, "end": 7, "asset": "character/kid-sad.webp", "on_screen_text": "다 아는 것 같았는데", "narration": "읽는 동안은, 다 아는 것 같거든요.", "motion": "shake"},
+      {"order": 3, "start": 7, "end": 12, "asset": "character/kid.webp", "on_screen_text": "기억은 꺼낼 때 생겨요", "narration": "진짜 기억은, 다시 볼 때가 아니라, 꺼내 볼 때 만들어져요.", "motion": "zoom_in"},
+      {"order": 4, "start": 12, "end": 16, "asset": "character/kid.webp > character/kid-happy.webp", "on_screen_text": "꺼내 보는 공부, 텍스트몬", "narration": "텍스트몬은, 외울 글을, 꺼내 보는 공부로 바꿔 줘요.", "motion": "swap_face"},
+      {"order": 5, "start": 16, "end": 20, "asset": "brand/mark.png", "on_screen_text": "오늘 한 편이면 충분해요", "narration": "프로필 링크에서, 무료로 시작해 보세요.", "motion": "bounce"}
+    ]
+  },
+  "caption": "세 번 읽었는데 하나도 기억이 안 난대요.\n\n아이가 게으른 게 아니에요.\n읽는 동안은 다 아는 것 같거든요.\n\n프로필 링크에서 무료로 시작해 보세요.\n\n#텍스트몬 #textmon #AI암기"
+}

@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-23",
+  "slot": 9,
+  "angle": "A",
+  "audience": "parent",
+  "media_type": "CAROUSEL",
+  "images": [
+    {"order": 1, "file": "", "headline": "많이 읽는 아이보다\n정확히 읽는 아이", "subline": "문해력, 양보다 방법이에요", "character": "character/kid.webp"},
+    {"order": 2, "file": "", "headline": "책은 많이 읽는데\n설명은 못 해요", "subline": "읽은 것과 아는 것은 달라요"},
+    {"order": 3, "file": "", "headline": "글에는 뼈대가 있어요", "subline": "무엇이 중심이고, 무엇이 예시인지", "character": "character/smart.webp"},
+    {"order": 4, "file": "", "headline": "뼈대를 잡으면\n외우는 양이 줄어요", "subline": "핵심만 꺼내면 나머지가 따라와요"},
+    {"order": 5, "file": "", "headline": "텍스트몬이\n핵심을 짚어 줘요", "subline": "가려진 말을 떠올리며 글 전체를 내 것으로", "character": "character/kid-happy.webp"},
+    {"order": 6, "file": "", "headline": "정확히 읽는 힘,\n오늘부터", "subline": "프로필 링크에서 무료로 시작해 보세요"}
+  ],
+  "caption": "많이 읽는 아이보다 정확히 읽는 아이.\n\n#텍스트몬 #textmon #AI암기 #문해력"
+}

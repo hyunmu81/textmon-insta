@@ -1,0 +1,2 @@
+- Pretendard (SIL Open Font License 1.1) — Pretendard-LICENSE.txt
+- Fredoka (SIL Open Font License 1.1) — https://github.com/google/fonts/tree/main/ofl/fredoka
