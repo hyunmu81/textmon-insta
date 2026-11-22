@@ -4,9 +4,10 @@ on:
   # 게시물 파일을 올리면: 영상·그림만 만들어 미리보기 (인스타에 올리지 않음)
   push:
     paths: ["posts/**"]
-  # 매일 저녁 8시 47분(한국 시간)에 그날 게시물을 인스타에 올림
+  # 매일 저녁 8시 17분·9시 17분·10시 17분·11시 17분(한국 시간)에 확인해서
+  # 그날 게시물이 아직 안 올라갔으면 올림 (늦게 넣은 게시물도 그날 안에 올라감)
   schedule:
-    - cron: "47 11 * * *"
+    - cron: "17 11-14 * * *"
   # 손으로 실행: 날짜를 골라 미리보기 또는 바로 올리기
   workflow_dispatch:
     inputs:
@@ -139,4 +140,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add posted.md
           git commit -m "인스타 올림: $D"
+          git pull --rebase origin main
           git push
