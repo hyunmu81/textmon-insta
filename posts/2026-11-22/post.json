@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-22",
+  "slot": 8,
+  "angle": "B",
+  "audience": "parent",
+  "media_type": "REELS",
+  "reel": {
+    "duration": 21,
+    "music_mood": "잔잔한 피아노와 따뜻한 건반",
+    "scenes": [
+      {
+        "order": 1,
+        "start": 0,
+        "end": 2,
+        "asset": "",
+        "prompt": "",
+        "on_screen_text": "혼자서도 시작할까요?",
+        "narration": "",
+        "motion": "none"
+      },
+      {
+        "order": 2,
+        "start": 2,
+        "end": 6,
+        "asset": "character/kid.webp",
+        "prompt": "",
+        "on_screen_text": "곁에 못 앉는 날",
+        "narration": "매일 옆에 앉아 봐주기는 어렵잖아요.",
+        "motion": "shake"
+      },
+      {
+        "order": 3,
+        "start": 6,
+        "end": 10,
+        "asset": "character/smart.webp",
+        "prompt": "",
+        "on_screen_text": "오늘은 한 문장",
+        "narration": "오늘 읽은 글에서, 한 문장만 떠올려 봐요.",
+        "motion": "zoom_in"
+      },
+      {
+        "order": 4,
+        "start": 10,
+        "end": 16,
+        "asset": "character/kid.webp > character/kid-happy.webp",
+        "prompt": "",
+        "on_screen_text": "내 글로 암기 연습",
+        "narration": "텍스트몬에서 외울 글을 암기 자료로 만들어요.",
+        "motion": "swap_face"
+      },
+      {
+        "order": 5,
+        "start": 16,
+        "end": 21,
+        "asset": "brand/mark.png",
+        "prompt": "",
+        "on_screen_text": "프로필에서 무료 체험",
+        "narration": "프로필 링크에서, 무료로 체험해 보세요.",
+        "motion": "none"
+      }
+    ]
+  },
+  "caption": "오늘은 혼자서도 시작할까요?\n\n매일 아이 곁에 앉아 공부를 봐주기는 어려워요.\n오늘 읽은 글에서 한 문장만 떠올려도 시작이에요.\n텍스트몬은 외울 글 한 편을 암기 자료로 바꿔 줘요.\n짧게라도 아이가 자기 힘으로 시작할 시간을 만들어 보세요.\n\n프로필 링크에서 무료로 체험해 보세요.\n\n#텍스트몬 #textmon #AI암기 #공부습관 #자기주도학습 #암기법 #초등공부 #중등공부 #집공부"
+}
