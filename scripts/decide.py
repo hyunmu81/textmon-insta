@@ -15,9 +15,9 @@ posted = Path("posted.md").read_text(encoding="utf-8") if Path("posted.md").exis
 
 date, publish, reason = "", False, ""
 if event == "schedule":
-    # 저녁 8~11시 사이 여러 번 실행된다. GitHub 예약 실행이 늦어져 자정을 넘기면 전날 게시물을 올린다.
+    # 저녁 8~11시 사이 여러 번 실행된다. GitHub 예약 실행이 늦어져 자정을 넘기면(다음 날 낮 12시 전까지) 전날 게시물을 올린다.
     now = datetime.now(KST)
-    target = now - timedelta(days=1) if now.hour < 6 else now
+    target = now - timedelta(days=1) if now.hour < 12 else now
     date, publish = target.strftime("%Y-%m-%d"), True
 elif event == "workflow_dispatch":
     date, publish = inp_date or today, inp_pub
