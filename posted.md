@@ -6,3 +6,4 @@ ChatGPT는 이 기록을 보고 지난 게시물과 첫 줄·구도가 겹치지
 |---|---|---|---|---|
 | 2026-11-21 | CAROUSEL | 7B | 수업을 마친 아이들, 어디서 막혔을까요? | https://www.instagram.com/p/Df-apg1Fwsl/ |
 | 2026-11-22 | REELS | 8B | 오늘은 혼자서도 시작할까요? | https://www.instagram.com/reel/DgEGFgQkRaz/ |
+| 2026-11-23 | CAROUSEL | 9B | 방금 읽은 글, 한 줄로 말할 수 있나요? | https://www.instagram.com/p/DgGe1bqlyn0/ |
