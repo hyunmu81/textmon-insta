@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-23",
+  "slot": 9,
+  "angle": "B",
+  "audience": "parent",
+  "media_type": "CAROUSEL",
+  "images": [
+    {
+      "order": 1,
+      "file": "",
+      "character": "",
+      "headline": "한 줄로 말할 수 있나요?",
+      "subline": "읽은 글에서 가장 중요한 한 줄을 찾아요",
+      "prompt": "",
+      "alt_text": "크림색 공책 위에 읽은 글을 한 줄로 말할 수 있는지 묻는 문구가 있습니다."
+    },
+    {
+      "order": 2,
+      "file": "",
+      "character": "",
+      "headline": "읽고 나면 익숙해요",
+      "subline": "책을 덮고 설명하려면 말문이 막혀요",
+      "prompt": "",
+      "alt_text": "책을 덮은 뒤 읽은 내용을 설명하기 어려운 상황을 글로 보여 줍니다."
+    },
+    {
+      "order": 3,
+      "file": "",
+      "character": "character/smart.webp",
+      "headline": "무엇을 말하는 글일까요?",
+      "subline": "글이 전하려는 생각부터 찾아봐요",
+      "prompt": "",
+      "alt_text": "똑똑몬과 함께 글이 전하려는 생각부터 찾아보자고 제안합니다."
+    },
+    {
+      "order": 4,
+      "file": "",
+      "character": "",
+      "headline": "내 말로 한 줄",
+      "subline": "기억나는 핵심을 짧게 말해 봐요",
+      "prompt": "",
+      "alt_text": "크림색 공책 위에 기억나는 핵심을 자기 말로 짧게 말해 보자는 안내가 있습니다."
+    },
+    {
+      "order": 5,
+      "file": "",
+      "character": "character/talk-happy.webp",
+      "headline": "오늘 읽은 글로 연습",
+      "subline": "텍스트몬에서 요약 연습을 해요",
+      "prompt": "",
+      "alt_text": "웃는 수다몬과 오늘 읽은 글로 요약을 연습하자는 안내가 있습니다."
+    },
+    {
+      "order": 6,
+      "file": "",
+      "character": "",
+      "headline": "오늘 읽은 글 한 편",
+      "subline": "프로필 링크에서 무료로 체험해요",
+      "prompt": "",
+      "alt_text": "텍스트몬 로고와 함께 프로필 링크에서 무료 체험을 안내합니다."
+    }
+  ],
+  "caption": "방금 읽은 글, 한 줄로 말할 수 있나요?\n\n아이가 글을 끝까지 읽었는데 설명 앞에서 멈출 때가 있어요.\n그럴 땐 글이 전하려는 생각을 먼저 물어봐 주세요.\n글 전체의 흐름을 떠올리고, 핵심을 자기 말로 짧게 정리해 봐요.\n텍스트몬에서 오늘 읽은 글로 요약 연습을 할 수 있어요.\n\n프로필 링크에서 무료로 체험해 보세요.\n\n#텍스트몬 #textmon #AI암기 #문해력 #공부습관 #자기주도학습 #초등공부 #중등공부 #서술형대비"
+}
